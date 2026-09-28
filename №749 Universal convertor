@@ -1,0 +1,32 @@
+def SSDec(n, a):
+    if a==0:
+        return a
+    s = 0
+    sA = str(abs(a))
+    for i in range(len(sA)-1, -1, -1):
+        s += int(sA[len(sA)-i-1])*(n**i)
+    if a<0:
+        s = '-' + str(s)
+    return s
+def SSK(k, a):
+    if a==0:
+        return a
+    s = ''
+    A1 = abs(a)
+    while A1:
+        x = A1%k
+        if 0<=x<=9:
+            s += str(x)
+        else:
+            s += chr(x+(65-10))
+        A1 //= k
+    s = s[::-1]
+    if a<0:
+        s = '-' + s
+    return s
+def convertorNK(n, a, k):
+    return SSK(k, SSDec(n, a))
+n = int(input())
+a = int(input())
+k = int(input())
+print(convertorNK(n, a, k))
